@@ -439,14 +439,8 @@ export default class bulmaCalendar extends EventEmitter {
     // Set export format based on component type
     this.format = this._type === 'date' ? this.options.dateFormat : `${this.options.dateFormat}`;
 
-    // Force dialog display mode on mobile devices
-    if (this.options.displayMode === 'default' && window.matchMedia('screen and (max-width: 768px)').matches) {
-      this.options.displayMode = 'dialog';
-    }
+    // Disable dual on mobile
     if (window.matchMedia('screen and (max-width: 768px)').matches) {
-      if (this.options.displayMode === 'default') {
-        this.options.displayMode = 'dialog';
-      }
       this.options.displayDual = false;
     }
 
